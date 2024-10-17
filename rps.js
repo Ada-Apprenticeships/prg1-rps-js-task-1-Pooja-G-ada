@@ -15,9 +15,7 @@ function rockPaperScissors(player1, player2) {
   let player2Winner = "player2";
 
   // condition for draw
-  if (player1 === player2){
-    return "draw";
-  } 
+  if (player1 === player2) return "draw";
 
   // check whether player1 or player2 wins
   return (winConditions[player1.toLowerCase()].includes(player2.toLowerCase())) ? player1Winner : player2Winner;
