@@ -1,15 +1,16 @@
 function rockPaperScissors(player1, player2) {
   
-  // coniditons for winning stored in array of objects?
-  let winConditions = [
-    {"rock": ["scissors", "lizard"]},
-    {"scissors": ["paper", "lizard"]},
-    {"paper": ["rock", "spock"]},
-    {"lizard": ["paper", "spock"]},
-    {"spock": ["scissors", "rock"]}
-  ];
+  // conditions for winning stored in an object data structure 
+  // where key wins over values;
+  let winConditions = {
+    "rock": ["scissors", "lizard"],
+    "scissors": ["paper", "lizard"],
+    "paper": ["rock", "spock"],
+    "lizard": ["paper", "spock"],
+    "spock": ["scissors", "rock"]
+  };
 
-  // output
+  // output string saved as variable
   let player1Winner = "player1";
   let player2Winner = "player2";
 
@@ -18,20 +19,11 @@ function rockPaperScissors(player1, player2) {
     return "draw";
   } 
 
-  // means iteration/loop
-  for (let i=0; i<winConditions.length; i++){
-    let winCondition = winConditions[i];
-    for (const key in winCondition){
-      if(player1.toLowerCase() === key && winCondition[key].includes(player2.toLowerCase())){
-        return player1Winner;
-      } else if (player2.toLowerCase() === key && winCondition[key].includes(player1.toLowerCase())){
-        return player2Winner;
-      }
-    }
-  }
+  // check whether player1 or player2 wins
+  return (winConditions[player1.toLowerCase()].includes(player2.toLowerCase())) ? player1Winner : player2Winner;
 }
+
 // #below my personal testing
-// $node rps.js
 console.log(rockPaperScissors("rock", "rock"))
 console.log(rockPaperScissors("rock", "scissors"))
 console.log(rockPaperScissors("scissors", "rock"))
