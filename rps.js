@@ -1,7 +1,6 @@
 function rockPaperScissors(player1, player2) {
   
-  // conditions for winning stored in an object data structure 
-  // where key wins over values;
+  // conditions for winning stored in an object data structure where keys wins over values;
   let winConditions = {
     "rock": ["scissors", "lizard"],
     "scissors": ["paper", "lizard"],
@@ -10,7 +9,7 @@ function rockPaperScissors(player1, player2) {
     "spock": ["scissors", "rock"]
   };
 
-  // output string saved as variable
+  // output saved as variable
   let player1Winner = "player1";
   let player2Winner = "player2";
 
