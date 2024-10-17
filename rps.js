@@ -1,39 +1,33 @@
 function rockPaperScissors(player1, player2) {
   
-  
+  // coniditons for winning stored in array of objects?
+  let winConditions = [
+    {"rock": ["scissors", "lizard"]},
+    {"scissors": ["paper", "lizard"]},
+    {"paper": ["rock", "spock"]},
+    {"lizard": ["paper", "spock"]},
+    {"spock": ["scissors", "rock"]}
+  ];
+
+  // output
   let player1Winner = "player1";
   let player2Winner = "player2";
 
+  // condition for draw
   if (player1 === player2){
-    return "draw" 
-  } else if (
-    (player1.toLowerCase() === "rock" && player2.toLowerCase() === "scissors") || 
-    (player1.toLowerCase() === "scissors" && player2.toLowerCase() === "paper") ||
-    (player1.toLowerCase() === "paper" && player2.toLowerCase() === "rock") ||
-    // additional criteria
-    (player1.toLowerCase() === "lizard" && player2.toLowerCase() === "spock") ||
-    (player1.toLowerCase() === "spock" && player2.toLowerCase() === "scissors") ||
-    (player1.toLowerCase() === "rock" && player2.toLowerCase() === "lizard") ||
-    (player1.toLowerCase() === "paper" && player2.toLowerCase() === "spock") ||
-    (player1.toLowerCase() === "scissors" && player2.toLowerCase() === "lizard") ||
-    (player1.toLowerCase() === "lizard" && player2.toLowerCase() === "paper") ||
-    (player1.toLowerCase() === "spock" && player2.toLowerCase() === "rock") 
-  ){
-    return `${player1Winner}`
-  } else if (
-    (player2.toLowerCase() === "rock" && player1.toLowerCase() === "scissors") ||
-    (player2.toLowerCase() === "scissors" && player1.toLowerCase() === "paper") ||
-    (player2.toLowerCase() === "paper" && player1.toLowerCase() === "rock") ||
-    // additional criteria
-    (player2.toLowerCase() === "lizard" && player1.toLowerCase() === "spock") ||
-    (player2.toLowerCase() === "spock" && player1.toLowerCase() === "scissors") ||
-    (player2.toLowerCase() === "rock" && player1.toLowerCase() === "lizard") ||
-    (player2.toLowerCase() === "paper" && player1.toLowerCase() === "spock") ||
-    (player2.toLowerCase() === "scissors" && player1.toLowerCase() === "lizard") ||
-    (player2.toLowerCase() === "lizard" && player1.toLowerCase() === "paper") ||
-    (player2.toLowerCase() === "spock" && player1.toLowerCase() === "rock") 
-  ){
-    return `${player2Winner}`
+    return "draw";
+  } 
+
+  // means iteration/loop
+  for (let i=0; i<winConditions.length; i++){
+    let winCondition = winConditions[i];
+    for (const key in winCondition){
+      if(player1.toLowerCase() === key && winCondition[key].includes(player2.toLowerCase())){
+        return player1Winner;
+      } else if (player2.toLowerCase() === key && winCondition[key].includes(player1.toLowerCase())){
+        return player2Winner;
+      }
+    }
   }
 }
 // #below my personal testing
